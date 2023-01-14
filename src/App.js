@@ -6,26 +6,7 @@ import { useSpring, animated } from "react-spring";
 import SECTORS from "./constants/sector";
 import axios from "axios";
 
-const TextScroller = (props) => {
-  const [key, setKey] = useState(1);
-
-  const scrolling = useSpring({
-    from: { transform: "translate(-300%,0)" },
-    to: { transform: "translate(120%,0)" },
-    config: { duration: 30000 },
-    reset: true,
-    // reverse: key % 2 == 0,
-    onRest: () => {
-      setKey(key + 1);
-    },
-  });
-
-  return (
-    <div key={key} style={{ whiteSpace: "nowrap" }}>
-      <animated.div style={scrolling}>{props.text}</animated.div>
-    </div>
-  );
-};
+import IntroCard from "./main_components/introCard/introCard";
 
 function App() {
   const [error, setError] = useState(null);
@@ -57,6 +38,7 @@ function App() {
 
         data.push({
           sector: SECTORS[i].name,
+          data: resps.data.data,
           counts: resps.data.data.length,
         });
       }
@@ -68,20 +50,10 @@ function App() {
     fetchData();
   }, []);
 
-  const groupBy = (array, key) => {
-    // Return the end result
-    return array.reduce((result, currentValue) => {
-      // If an array already present for key, push it to the array. Else create an array and push the object
-      (result[currentValue[key]] = result[currentValue[key]] || []).push(
-        currentValue
-      );
-      // Return the current iteration `result` value, this will be taken as next iteration `result` value and accumulate
-      return result;
-    }, {}); // empty object is the initial value for result object
-  };
-
-  const mitra_name = Object.keys(groupBy(vacancy, "mitra_name"));
-  const mitra_name_string = mitra_name.join(" • ");
+  let intro_modal_props = {
+    vacancy: vacancy,
+    categoricalCounts: categoricalCounts
+  }
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -89,31 +61,7 @@ function App() {
     return <div>Loading...</div>;
   } else {
     return (
-      <div className="main-content-container">
-        <div className="first-row center">
-          <div className="image-title">
-            <img
-              style={{ width: "6vw" }}
-              src="https://theme.zdassets.com/theme_assets/11435355/bceff9063d378e3cb6db2a82dec7685679d18255.png"
-            />
-          </div>
-          <div className="main-stats">
-            <div className="first-row center">
-              <h1 style={{ fontSize: "8em" }}>{vacancy.length}</h1>
-              <h2 style={{ fontSize: "2em" }}>Lowongan</h2>
-            </div>
-            <div className="second-row">
-              {categoricalCounts.map((cat) => 
-                <div className="lowongan-small center">
-                  <h2 style={{ fontSize: "1.2em", textAlign:"center", minHeight: "2.4em" }}>{cat.sector}</h2>
-                  <h1 style={{ fontSize: "4em" }}>{cat.counts}</h1>
-                  <h2 style={{ fontSize: "1em" }}>Lowongan</h2>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
+      <IntroCard {...intro_modal_props} />
     );
   }
 }

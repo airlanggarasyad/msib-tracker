@@ -1,0 +1,33 @@
+.main-content-container {
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    max-height: 80vh;
+    max-width: 60vw;
+  }
+  
+  .center {
+    display: flex;
+    align-items: center;
+  }
+  
+  .first-row {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+  }
+  
+  .second-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1em;
+    justify-content: center;
+  }
+  
+  .lowongan-small {
+    flex-direction: column;
+    padding: 0.5em 1.5em;
+    width: 33.33%;
+    box-sizing: border-box;
+    justify-content: space-between;
+  }
