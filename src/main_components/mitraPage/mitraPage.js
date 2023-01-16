@@ -1,6 +1,6 @@
-import { BsGlobe } from "react-icons/bs";
+import { BsGlobe, BsFillCalendar2WeekFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
-import { FaBriefcase, FaMap } from "react-icons/fa";
+import { FaMap } from "react-icons/fa";
 
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
@@ -10,9 +10,18 @@ import "./mitraPage.css";
 import SECTORS from "../../constants/sector";
 
 function CompanyCard(props) {
+  const options = { year: "numeric", month: "long", day: "numeric" };
+
+  const startDate = new Date(props.start_duration).toLocaleDateString(undefined, options);
+  const endDate = new Date(props.end_duration).toLocaleDateString(undefined, options);
+  console.log(props)
   return (
     <div className="company-card">
       <h4>{props.name}</h4>
+      <span>
+        <BsFillCalendar2WeekFill style={{ width: "5%" }} />
+        <p style={{ width: "95%" }}>{startDate} - {endDate}</p>
+      </span>
       <span>
         <FaMap style={{ width: "5%" }} />
         <p style={{ width: "95%" }}>{props.location}</p>
