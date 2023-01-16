@@ -14,10 +14,10 @@ function CompanyCard(props) {
 
   const startDate = new Date(props.start_duration).toLocaleDateString(undefined, options);
   const endDate = new Date(props.end_duration).toLocaleDateString(undefined, options);
-  console.log(props)
+
   return (
     <div className="company-card">
-      <h4>{props.name}</h4>
+      <p style={{fontSize:"1.25em", fontWeight:600}}>{props.name}</p>
       <span>
         <BsFillCalendar2WeekFill style={{ width: "5%" }} />
         <p style={{ width: "95%" }}>{startDate} - {endDate}</p>

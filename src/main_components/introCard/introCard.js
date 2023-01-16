@@ -13,7 +13,7 @@ const IntroCard = (props) => {
           </div>
           <div className="main-stats">
             <div className="first-row center">
-              <h1 style={{ fontSize: "5em" }}>{props.vacancy.length}</h1>
+              <h1 style={{ fontSize: "5em", fontWeight:800 }}>{props.vacancy.length}</h1>
               <h2 style={{ fontSize: "1.5em" }}>Lowongan</h2>
             </div>
             <div className="second-row">
@@ -28,7 +28,7 @@ const IntroCard = (props) => {
                   >
                     {cat.sector}
                   </h2>
-                  <h1 style={{ fontSize: "4em" }}>{cat.counts}</h1>
+                  <h1 style={{ fontSize: "4em", fontWeight:600 }}>{cat.counts}</h1>
                   <h2 style={{ fontSize: "1em" }}>Lowongan</h2>
                 </div>
               ))}
