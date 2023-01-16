@@ -2,11 +2,13 @@ import "./App.css";
 
 import { useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
+import { Routes, Route} from 'react-router-dom';
 
 import SECTORS from "./constants/sector";
 import axios from "axios";
 
 import IntroCard from "./main_components/introCard/introCard";
+import MitraPage from "./main_components/mitraPage/mitraPage";
 
 function App() {
   const [error, setError] = useState(null);
@@ -32,6 +34,7 @@ function App() {
       );
 
     const data = [];
+
     const fetchData = async () => {
       for (let i = 0; i < 6; i++) {
         const resps = await axios(`${api}${SECTORS[i].sectorID}`);
@@ -52,8 +55,8 @@ function App() {
 
   let intro_modal_props = {
     vacancy: vacancy,
-    categoricalCounts: categoricalCounts
-  }
+    categoricalCounts: categoricalCounts,
+  };
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -61,7 +64,24 @@ function App() {
     return <div>Loading...</div>;
   } else {
     return (
-      <IntroCard {...intro_modal_props} />
+      <>
+        <div
+          style={{
+            height: "100vh",
+            height: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <div className="main-content-container">
+          <Routes>
+        <Route path="/" element={<IntroCard {...intro_modal_props}/>}/>
+        <Route path="mitra" element={<MitraPage {...categoricalCounts}/>}/>
+      </Routes>
+          </div>
+        </div>
+      </>
     );
   }
 }

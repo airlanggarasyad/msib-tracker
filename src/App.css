@@ -1,3 +1,33 @@
 * {
   margin: 0;
 }
+
+.main-content-container {
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  height: 80vh;
+  width: 60vw;
+}
+
+.company-card {
+  display: flex;
+  align-items: center;
+  margin: 1em 0;
+}
+
+.company-card .left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+}
+
+.company-card .left img {
+  width: 75%;
+  padding: 0.25em;
+}
+
+.company-card .right {
+  width: 90%;
+}

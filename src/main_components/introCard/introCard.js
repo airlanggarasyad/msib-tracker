@@ -1,10 +1,10 @@
 import "./introCard.css";
+import Button from 'react-bootstrap/Button';
 
 const IntroCard = (props) => {
   return (
     <>
-      <div className="main-content-container">
-        <div className="first-row center">
+      <div className="intro-container center">
           <div className="image-title">
             <img
               style={{ width: "6vw" }}
@@ -13,8 +13,8 @@ const IntroCard = (props) => {
           </div>
           <div className="main-stats">
             <div className="first-row center">
-              <h1 style={{ fontSize: "8em" }}>{props.vacancy.length}</h1>
-              <h2 style={{ fontSize: "2em" }}>Lowongan</h2>
+              <h1 style={{ fontSize: "5em" }}>{props.vacancy.length}</h1>
+              <h2 style={{ fontSize: "1.5em" }}>Lowongan</h2>
             </div>
             <div className="second-row">
               {props.categoricalCounts.map((cat) => (
@@ -32,9 +32,11 @@ const IntroCard = (props) => {
                   <h2 style={{ fontSize: "1em" }}>Lowongan</h2>
                 </div>
               ))}
+              <div className="third-row">
+              <Button variant="dark" href="/mitra">Detail</Button>
+              </div>
             </div>
           </div>
-        </div>
       </div>
     </>
   );

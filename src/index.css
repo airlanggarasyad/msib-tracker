@@ -1,14 +1,7 @@
 body {
   margin: 0;
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    monospace !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.centered {
-  height: 100vh; /* Magic here */
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
